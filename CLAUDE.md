@@ -21,7 +21,8 @@ Optik und Gestaltungsregeln sind 1:1 von dort übernommen (nur die tatsächlich 
 
 ## Inhalte
 - Kopfzeile: Logo EDEKA Food Academy FRESH (links) + Titel „Fresh Digital“
-- Fresh-Digital-Graffiti-Logo mit „NEU!“, Suche über alle Videos
+- Startbereich (volle Bildschirmhöhe): großes, schwebendes Fresh-Digital-Logo mit „NEU!“, Glühen, Unterzeile, Knopf „Zu den Videos“; beim Scrollen gleitet es langsamer mit und blendet aus (Parallax, nur transform/opacity)
+- Darunter (`#fdmain`) die Netflix-Ansicht mit Suche über alle Videos; Album öffnen/schließen und Zurück-Taste springen dorthin, nicht zum Startbereich
 - Album-Fächer (2 Cover) → Album öffnet sich mit Flug-Animation, Reihen nach Thema (Handgriffe) bzw. Level 1–3 (Legetechniken); Zurück-Taste/„Alben“ schließt
 - Desktop: gelbe Pfeile zum Blättern in den Reihen
 - „Mehr von der Food Academy“: EDEKA next, WizzUp, Instagram @edeka_foodacademy, Link zur Fresh-Broschüre im Seminar-Finder
