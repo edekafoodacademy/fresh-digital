@@ -353,6 +353,27 @@ button.nfc{padding:0;border:0;font:inherit;text-align:start;cursor:pointer;-webk
 @media (min-width:900px){.fdfoot{margin-left:var(--dpx);margin-right:var(--dpx)}}
 .toast.show{opacity:1;transform:translateX(-50%)}
 .fxclr[hidden]{display:none!important}
+/* ===== Startbereich: großes, schwebendes Fresh-Digital-Logo ===== */
+.fdhero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:max(440px,calc(100svh - 64px));padding:12px 18px 96px;text-align:center;isolation:isolate;overflow:hidden}
+.fdhero-glow{position:absolute;z-index:-1;inset:0;margin:auto;width:min(130vw,980px);height:min(130vw,980px);border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,138,31,.34) 0%,rgba(255,200,0,.13) 32%,transparent 64%);animation:fdglow 6s ease-in-out infinite}
+.fdhero-par{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1));opacity:var(--po,1);will-change:transform,opacity}
+.fdhero-in{display:flex;flex-direction:column;align-items:center;gap:22px;animation:fdin 1.1s var(--ease) both}
+.fdhero-logo{position:relative;width:min(88vw,760px);cursor:pointer}
+.fdhero-logo img{display:block;width:100%;height:auto;aspect-ratio:1100/369;filter:drop-shadow(0 22px 44px rgba(255,110,0,.42));animation:fdfloat 5.6s ease-in-out infinite}
+.fdhero-new{position:absolute;right:1%;top:-2%;font-size:clamp(12px,2.6vw,16px);padding:5px 12px;rotate:8deg;box-shadow:0 10px 24px -8px rgba(255,138,31,.8);animation:fdnew 2.8s ease-in-out 1.4s infinite}
+.fdhero-sub{margin:0;display:flex;flex-direction:column;gap:6px;font-family:var(--hf);font-weight:700;font-size:clamp(19px,5vw,30px);line-height:1.15;color:#fff}
+.fdhero-sub span{font-family:var(--bf,Inter),sans-serif;font-weight:500;font-size:clamp(14px,3.6vw,18px);color:#cfd2d6}
+.fdhero-down{position:absolute;left:0;right:0;bottom:calc(20px + var(--safe-b));margin:auto;width:max-content;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;border:0;background:none;cursor:pointer;color:#cfd2d6;font:700 12px/1 var(--hf);letter-spacing:.14em;text-transform:uppercase;animation:fdin 1s var(--ease) .6s both}
+.fdhero-down i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:rgba(255,210,0,.12);border:1px solid rgba(255,210,0,.45);box-shadow:0 10px 26px -12px rgba(255,180,0,.7);animation:fdbob 1.8s ease-in-out 1.6s infinite}
+.fdhero-down svg{width:22px;height:22px;stroke:#FFD200;fill:none;stroke-width:2.4;rotate:90deg}
+.fdhero-down:hover i{background:rgba(255,210,0,.2)}
+@keyframes fdfloat{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-16px) rotate(1.2deg)}}
+@keyframes fdglow{0%,100%{opacity:.85;scale:1}50%{opacity:1;scale:1.07}}
+@keyframes fdin{from{opacity:0;transform:translateY(18px) scale(.86)}}
+@keyframes fdnew{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes fdbob{0%,100%{translate:0 0}50%{translate:0 7px}}
+@media (min-width:900px){.fdhero{min-height:max(560px,calc(100svh - 76px))}.fdhero-logo{width:min(62vw,820px)}}
+@media (prefers-reduced-motion:reduce){.fdhero-par{transform:none;opacity:1}}
 
 </style>
 </head>
@@ -434,6 +455,7 @@ function fdFly(src, a, rotFrom, b, rotTo, hide) {
   const an = c.animate([{ transform: `translate(0,0) rotate(${rotFrom}deg) scale(1)` }, { transform: `translate(${dx}px,${dy}px) rotate(${rotTo}deg) scale(${b.w / a.w})` }], { duration: 620, easing: 'cubic-bezier(.2,.85,.25,1)', fill: 'forwards' });
   an.onfinish = end; an.oncancel = end; setTimeout(end, 1200)
 }
+function fdMainTop() { const m = document.getElementById('fdmain'), hd = document.querySelector('.fdhead'); if (!m) return 0; return Math.max(0, m.getBoundingClientRect().top + window.scrollY - (hd ? hd.offsetHeight : 0) - 6) }
 const fdRot = el => parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0;
 function fdEager(sec) { sec.querySelectorAll('.nfv img').forEach(im => { if (im.complete && im.naturalWidth) im.classList.add('ok'); else { im.loading = 'eager'; im.addEventListener('load', () => im.classList.add('ok'), { once: true }) } }) }
 function openAlbum(k, fromPop) {
@@ -442,14 +464,14 @@ function openAlbum(k, fromPop) {
   const from = card && card.offsetParent ? fdBox(card) : null, rot = alb ? fdRot(alb) : 0, src = card ? card.querySelector('img').src : '';
   fb('open', 10); S.fdAlb = k; if (!fromPop) { try { history.pushState({ ...(history.state || {}), alb: k }, '', location.href) } catch (_) {} }
   v.dataset.alb = k; const sec = v.querySelector(`.fxsec[data-sec="${k}"]`); sec.classList.remove('alb-in'); void sec.offsetWidth; sec.classList.add('alb-in');
-  window.scrollTo({ top: 0, behavior: 'instant' }); fdEager(sec); sec.querySelectorAll('.nfsc-wrap').forEach(updNfArr);
+  window.scrollTo({ top: fdMainTop(), behavior: 'instant' }); fdEager(sec); sec.querySelectorAll('.nfsc-wrap').forEach(updNfArr);
   const tgt = sec.querySelector('.fxah-c'); if (from && tgt) fdFly(src, from, rot, fdBox(tgt), 0, tgt)
 }
 function closeAlbum(fromPop) {
   const v = document.querySelector('.fdv'); if (!v || !v.dataset.alb) return; const k = v.dataset.alb;
   const hc = v.querySelector(`.fxsec[data-sec="${k}"] .fxah-c`); const from = hc && hc.offsetParent ? fdBox(hc) : null;
   S.fdAlb = ''; v.dataset.alb = ''; const fan = v.querySelector('.fxfan'); fan.classList.remove('intro', 'ret'); void fan.offsetWidth; fan.classList.add('ret');
-  window.scrollTo({ top: 0, behavior: 'instant' }); if (!fromPop && history.state && history.state.alb) { try { history.back() } catch (_) {} }
+  window.scrollTo({ top: fdMainTop(), behavior: 'instant' }); if (!fromPop && history.state && history.state.alb) { try { history.back() } catch (_) {} }
   const alb = v.querySelector(`.fxalb[data-album="${k}"]`), card = alb && alb.querySelector('.fxalb-s');
   if (from && card) fdFly(hc.src, from, 0, fdBox(card), fdRot(alb), card)
 }
@@ -462,7 +484,13 @@ function vFreshDigital() {
   return `<div class="view fdv" data-alb="${alb}">
    <header class="bar fdhead"><a class="fdh-logo" href="./" aria-label="${T('EDEKA Food Academy Fresh – zur Startseite')}"><img src="img/logo-fa-fresh.png" width="1151" height="537" alt="EDEKA Food Academy Fresh"></a><div class="ttl">Fresh Digital</div></header>
    <h1 class="sr-only">Fresh Digital</h1>
-   <div class="nfbrand"><img src="fresh/fd-logo.webp" alt="Fresh Digital"><span class="fd-new2">${T('Neu!')}</span></div>
+   <section class="fdhero" aria-label="Fresh Digital">
+    <span class="fdhero-glow" aria-hidden="true"></span>
+    <div class="fdhero-par"><div class="fdhero-in"><div class="fdhero-logo"><img src="fresh/fd-logo.webp" width="1100" height="369" alt="Fresh Digital"><span class="fd-new2 fdhero-new">${T('Neu!')}</span></div>
+     <p class="fdhero-sub">${T('100 Handgriffe & Legetechniken')}<span>${T('Kurz, direkt aus der Praxis – für die Bedientheke.')}</span></p></div></div>
+    <button type="button" class="fdhero-down" data-down>${T('Zu den Videos')}<i>${svg('chev')}</i></button>
+   </section>
+   <div id="fdmain"></div>
    <div class="fxsearch">${svg('search')}<input id="fxq" type="search" placeholder="${T('Videos durchsuchen …')}" aria-label="${T('Videos durchsuchen …')}" autocomplete="off"><span id="fxcnt"></span><button class="fxclr" type="button" hidden aria-label="${T('Suche leeren')}">${svg('x')}</button></div>
    <div class="fxfan${alb ? '' : ' intro'}"><div class="fxfan-in">${['hg', 'lege'].map((k, i) => `<button class="fxalb" data-album="${k}" style="--r:${i ? 8 : -8}deg;--k:${i}" aria-label="${esc(A[k].t)}"><span class="fxalb-d"><i></i></span><span class="fxalb-s"><img src="${A[k].img}" alt="" draggable="false"></span><span class="fxalb-t"><b>${esc(A[k].t)}</b><small>${T('{0} Videos', A[k].n)}</small></span></button>`).join('')}</div><p class="fxfan-h">${T('Album antippen zum Öffnen')}</p></div>
    <div class="fxsec" data-sec="hg">${fdAlbHead(A.hg)}
@@ -495,14 +523,22 @@ function initFx(v) {
   q.addEventListener('input', run); clr.addEventListener('click', () => { q.value = ''; run(); q.focus() })
 }
 
-function render() { app.innerHTML = vFreshDigital(); initFx(app.querySelector('.fdv')) }
+function heroScroll() {
+  const h = document.querySelector('.fdhero'); if (!h) return; const H = h.offsetHeight || 1; const y = Math.min(Math.max(window.scrollY, 0), H); const p = y / H;
+  h.style.setProperty('--py', (y * .42).toFixed(1) + 'px'); h.style.setProperty('--ps', (1 - p * .16).toFixed(4)); h.style.setProperty('--po', Math.max(0, 1 - p * 1.25).toFixed(3))
+}
+let heroRaf = 0;
+window.addEventListener('scroll', () => { if (fdRM() || heroRaf) return; heroRaf = requestAnimationFrame(() => { heroRaf = 0; heroScroll() }) }, { passive: true });
+function render() { app.innerHTML = vFreshDigital(); const v = app.querySelector('.fdv'); initFx(v); heroScroll(); if (v.dataset.alb) requestAnimationFrame(() => window.scrollTo({ top: fdMainTop(), behavior: 'instant' })) }
 
 app.addEventListener('click', e => {
   const ab = e.target.closest('[data-album]'); if (ab) { openAlbum(ab.dataset.album); return }
   if (e.target.closest('[data-albx]')) { fb('sel', 8); closeAlbum(); return }
   if (e.target.closest('[data-soon]')) { fb('sel', 8); toast(T('Video folgt in Kürze')); return }
+  if (e.target.closest('[data-down],.fdhero-logo')) { fb('sel', 6); window.scrollTo({ top: fdMainTop(), behavior: fdRM() ? 'auto' : 'smooth' }); return }
 });
 
+try { history.scrollRestoration = 'manual' } catch (_) {}  /* Zurück-Taste: Seite steuert die Scrollposition selbst (bleibt in der Netflix-Ansicht) */
 document.documentElement.style.setProperty('--acc', '#FF8A1F');
 buildBgRows();
 render();
