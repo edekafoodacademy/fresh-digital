@@ -399,7 +399,6 @@ const T = (k, ...a) => a.length ? k.replace(/\{(\d)\}/g, (m, i) => a[+i]) : k;
 const fxNorm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss');
 const FD = window.FD_VIDEOS;
 const NFX = 'target="_blank" rel="noopener"';
-const FINDER = 'https://edekafoodacademy.github.io/food-academy-seminar-app/';
 const thumbSrc = id => 'thumbs/' + id + '.webp';
 const S = { fdAlb: '', fdQ: '' };
 const app = document.getElementById('app');
@@ -408,7 +407,7 @@ const app = document.getElementById('app');
 const fb = (_, ms = 8) => { try { if (matchMedia('(pointer:coarse)').matches && navigator.vibrate) navigator.vibrate(ms) } catch (_) {} };
 function toast(t) { const e = document.getElementById('toast'); e.textContent = t; e.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove('show'), 2200) }
 
-/* Hintergrund-Schriftbänder wie im Seminar-Finder */
+/* Hintergrund-Schriftbänder (Food-Academy-Look) */
 function buildBgRows() {
   const r = document.querySelector('#bg .rows'); const txt = T('INSPIRIEREN · BEFÄHIGEN · ERMÖGLICHEN · '); let h = '';
   for (let i = 0; i < 5; i++) { const seg = `<span>${txt.repeat(2)}</span>`; h += `<div class="row ${i % 2 ? 'r' : 'l'}${i === 3 ? ' f' : ''}" style="animation-duration:${80 + i * 10}s">${seg}${seg}</div>` }
@@ -503,9 +502,8 @@ function vFreshDigital() {
     <a class="nxcard" href="https://www.next.edeka/nst_" ${NFX}><img class="nxlogo" src="fresh/next-logo.webp" alt="EDEKA next"><span class="nxtx"><small>${T('Blended Learning')}</small><b>${T('Wissen, das zu dir passt.')}</b><span class="nxs">${T('Unsere Seminare enden nicht nach dem letzten Seminartag: Auf EDEKA next bekommst du passende Lerninhalte, Videos und Unterlagen direkt vor und nach deinem Seminar – zum Vertiefen, Wiederholen und sofort im Markt Anwenden.')}</span><span class="nxtags"><em>${T('Einfach.')}</em><em>${T('Flexibel.')}</em><em>${T('Direkt verfügbar.')}</em></span><span class="nxgo">${svg('ext')}${T('Zu EDEKA next')}</span><span class="nxid">${svg('shield')}${T('Zugang mit EDEKA-ID & Passwort')}</span></span></a>
     <a class="wzcard" href="https://wizzup.quizzer-server.de/" ${NFX}><span class="wzlogo">Wizz<br>Up!</span><span class="wztx"><b>${T('Lernen, spielen, Wissen pushen!')}</b><small>${T('WizzUp! macht Lernen zum Quiz-Duell – im Browser oder per App. Mit deinem next-Zugang startest du sofort.')}</small><span class="wzgo">${svg('trophy')}${T('Zur Challenge')}</span></span></a>
     ${igCard()}
-    <a class="lnk glass" href="${FINDER}#katalog-fresh" ${NFX} style="margin:0;width:100%"><span class="pi">${svg('book')}</span><span><b>${T('Fresh-Broschüre 2027')}</b><span class="s">${T('Im Seminar-Finder der Food Academy')}</span></span>${svg('chev', 'arr')}</a>
    </div>
-   <footer class="fdfoot">EDEKA Food Academy Fresh · Nordbayern · Sachsen · Thüringen<br><a href="${FINDER}" ${NFX}>${T('Zum Seminar-Finder 2027')}</a></footer>
+   <footer class="fdfoot">EDEKA Food Academy Fresh · Nordbayern · Sachsen · Thüringen</footer>
    <div style="height:calc(24px + var(--safe-b))"></div></div>`
 }
 
