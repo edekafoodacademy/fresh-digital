@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1c1e21">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fresh Digital">
+<meta name="format-detection" content="telephone=no, email=no, address=no, date=no">
+<title>Fresh Digital</title>
+<meta name="description" content="Fresh Digital von der EDEKA Food Academy Fresh: 100 Handgriffe und Legetechniken für die Bedientheke – kurz, direkt aus der Praxis.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="EDEKA Food Academy Fresh">
+<meta property="og:title" content="Fresh Digital">
+<meta property="og:description" content="Fresh Digital von der EDEKA Food Academy Fresh: 100 Handgriffe und Legetechniken für die Bedientheke – kurz, direkt aus der Praxis.">
+<meta property="og:url" content="https://edekafoodacademy.github.io/fresh-digital/">
+<meta property="og:image" content="https://edekafoodacademy.github.io/fresh-digital/img/og-vorschau.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fresh Digital – EDEKA Food Academy Fresh">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/app/icon-192.png">
+<link rel="apple-touch-icon" href="img/app/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+@font-face{font-family:Inter;font-weight:400;font-display:swap;src:url(fonts/inter-regular.woff) format('woff')}
+@font-face{font-family:Inter;font-weight:500;font-display:swap;src:url(fonts/inter-medium.woff) format('woff')}
+@font-face{font-family:Inter;font-weight:600;font-display:swap;src:url(fonts/inter-semibold.woff) format('woff')}
+@font-face{font-family:Inter;font-weight:700 900;font-display:swap;src:url(fonts/inter-bold.woff) format('woff')}
+@font-face{font-family:Outfit;font-weight:300 500;font-display:swap;src:url(fonts/outfit-regular.woff) format('woff');unicode-range:U+0000-024F,U+2000-206F,U+20AC}
+@font-face{font-family:Outfit;font-weight:600 900;font-display:swap;src:url(fonts/outfit-bold.woff) format('woff');unicode-range:U+0000-024F,U+2000-206F,U+20AC}
+:root{
+  --y:#FFD200;--y2:#FFE76A;--ya:#F5B400;--bg:#1c1e21;--card:#26292d;--line:rgba(255,255,255,.08);
+  --text:#F7F7F5;--muted:#AEB2B6;--dim:#7d8287;--acc:#FFD200;
+  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);
+  --ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1);
+  --hf:Outfit,Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-feature-settings:"cv11","ss01";letter-spacing:-.006em;font-weight:500;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+body{min-height:100vh;min-height:100dvh;overflow-x:hidden}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--hf);font-weight:800;line-height:1.04;letter-spacing:-.025em}
+#bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#1c1e21}
+#bg .slate{position:absolute;inset:-4%;background:url(img/ui/9f93b0480f.jpg) center/cover;opacity:.5;animation:slatePan 60s ease-in-out infinite alternate}
+#bg .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,30,33,.55),rgba(28,30,33,.86) 55%,#17191b)}
+#bg .rows{position:absolute;left:-30%;right:-30%;top:-5%;bottom:-5%;transform:rotate(-14deg);display:flex;flex-direction:column;justify-content:space-around}
+#bg .row{white-space:nowrap;font-family:var(--hf);font-weight:800;font-size:12vmin;line-height:1;letter-spacing:-.01em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.13)}
+#bg .row span{display:inline-block;padding-right:.4em}
+#bg .row.f{color:rgba(255,210,0,.035);-webkit-text-stroke:1px rgba(255,210,0,.12)}
+#bg .row.l{animation:mL 85s linear infinite}
+#bg .row.r{animation:mR 100s linear infinite}
+#bg .hrt{position:absolute;width:90vmin;height:90vmin;opacity:.14}
+#bg .hrt path{fill:none;stroke:var(--acc);stroke-width:1.2;vector-effect:non-scaling-stroke;stroke-dasharray:3 6;transition:stroke 1.2s}
+#bg .h1{right:-38vmin;top:6vh;animation:hspin 70s linear infinite}
+#bg .h2{left:-42vmin;bottom:-30vmin;width:110vmin;height:110vmin;opacity:.09;animation:hspin 95s linear infinite reverse}
+#bg .arrows{position:absolute;left:6%;top:58%;display:flex;gap:10px;opacity:.16}
+#bg .arrows svg{width:60px;height:24px;stroke:var(--y);fill:none;stroke-width:2.4;animation:arr 3.6s var(--ease) infinite}
+#bg .arrows svg:nth-child(2){animation-delay:.25s}
+#bg .arrows svg:nth-child(3){animation-delay:.5s}
+.view{position:relative}
+.enter-back{animation:inBack .5s var(--ease) both}
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:calc(10px + var(--safe-t)) 16px 10px;background:rgba(28,30,33,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.bar .ttl{flex:1;min-width:0;font-family:var(--hf);font-weight:700;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .35s,transform .35s var(--ease)}
+.iconbtn{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none;position:relative;overflow:hidden;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);transition:transform .45s var(--spring)}
+.iconbtn:active{transform:scale(.86)}
+.iconbtn svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cta,.opt,.btn2,.row,.tile,.fchip,.card,.qtile,.tchip,.lnk{position:relative;overflow:hidden;isolation:isolate}
+.glass{background:linear-gradient(180deg,rgba(52,55,59,.94),rgba(38,41,44,.94));border:1px solid rgba(255,255,255,.085);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 38px -26px rgba(0,0,0,.95)}
+.qtile:active,.opt:active,.row:active,.tile:active,.katcard:active{transform:scale(.965)}
+.row{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:10px 12px 10px 10px;margin-top:10px;border-radius:22px;transition:transform .5s var(--spring)}
+.lnk{display:flex;align-items:center;gap:14px;text-decoration:none;margin:14px 18px 0;padding:14px 16px;border-radius:22px;width:calc(100% - 36px);text-align:left;transition:transform .5s var(--spring)}
+.lnk:active{transform:scale(.97)}
+.lnk .pi{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,var(--y2),var(--ya))}
+.lnk .pi svg{width:24px;height:24px;stroke:#17181a;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.lnk b{font-family:var(--hf);font-size:16px;font-weight:700;display:block}
+.lnk .s{font-size:12.5px;color:var(--muted)}
+.lnk .arr{width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2.4;margin-left:auto;flex:none}
+.toast{position:fixed;left:50%;bottom:calc(26px + var(--safe-b));transform:translateX(-50%) translateY(30px) scale(.9);background:#fff;color:#17181a;font-weight:700;font-size:14px;padding:13px 20px;border-radius:999px;opacity:0;transition:all .45s var(--spring);z-index:120;pointer-events:none;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+#bg .glow{position:absolute;width:70vmax;height:70vmax;border-radius:50%;pointer-events:none}
+#bg .g1{left:-25vmax;top:-20vmax;background:radial-gradient(circle,rgba(255,210,0,.11),rgba(255,210,0,0) 62%);animation:drift1 44s ease-in-out infinite alternate}
+#bg .g2{right:-30vmax;bottom:-25vmax;background:radial-gradient(circle,color-mix(in srgb,var(--acc) 16%,transparent),transparent 62%);animation:drift2 52s ease-in-out infinite alternate}
+@media (min-width:900px){
+.bar{padding-left:40px;padding-right:40px}
+.lnk{margin:16px 40px 0;width:auto;max-width:520px}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+}
+h1,h2,h3{font-weight:700;letter-spacing:-.03em}
+.fdv{background:#0d0d0e}
+.fd-new2{display:inline-block;font-family:var(--hf);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#17181a;background:#ff8a1f;padding:4px 10px;border-radius:7px}
+.nfrow{margin-top:26px}
+.wzcard{display:flex;gap:14px;align-items:center;padding:16px;border-radius:22px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#1b1b1b,#0b0b0b);border:1.5px solid #ffd200;box-shadow:0 0 0 4px rgba(255,210,0,.08),0 20px 40px -24px rgba(255,210,0,.6)}
+.wzlogo{flex:none;width:76px;height:76px;border-radius:16px;background:#111;border:2px solid #ffd200;display:grid;place-items:center;text-align:center;font-family:var(--hf);font-weight:800;font-size:21px;line-height:.95;color:#ffd200;transform:rotate(-4deg)}
+.wztx b{display:block;font-family:var(--hf);font-size:17px}
+.wztx small{display:block;font-size:12.5px;color:#cfcfcf;line-height:1.4;margin-top:3px}
+.wzgo{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-weight:700;font-size:13.5px;color:#ffd200}
+.wzgo svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2}
+.iconbtn{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 8px 18px -10px rgba(0,0,0,.8)}
+.iconbtn:hover{border-color:rgba(255,210,0,.5)}
+.lnk .pi{background:linear-gradient(145deg,#FFE97A,#FFC400);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 8px 16px -8px rgba(255,190,0,.7)}
+.igcard2{display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:22px;text-decoration:none;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden;transition:transform .5s var(--spring)}
+.igcard2::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 140% at 0% 50%,rgba(214,41,118,.22),transparent 55%);pointer-events:none}
+.igcard2:active{transform:scale(.97)}
+.igav{position:relative;flex:none;width:58px;height:58px;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);animation:igspin 6s linear infinite}
+.igav img{width:100%;height:100%;border-radius:50%;border:2.5px solid #1c1e21;display:block;animation:igspin 6s linear infinite reverse}
+.igtx2{position:relative;flex:1;min-width:0}
+.ign{display:flex;align-items:center;gap:6px;font-weight:700;font-size:15.5px;letter-spacing:-.01em}
+.igmini{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;opacity:.8}
+.igtx2 small{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}
+.igfollow{position:relative;flex:none;padding:9px 16px;border-radius:12px;font-weight:700;font-size:13.5px;color:#fff;background:linear-gradient(90deg,#f58529,#dd2a7b 50%,#8134af);box-shadow:0 8px 18px -8px rgba(221,42,123,.8)}
+.fdv[data-alb=""] .fxsec{display:none}
+.fdv[data-alb=hg] .fxsec[data-sec=lege],.fdv[data-alb=lege] .fxsec[data-sec=hg]{display:none}
+.fdv:not([data-alb=""]) .fxfan{display:none}
+.fdv.fxs .fxfan,.fdv.fxs .fxah{display:none!important}
+.fxfan{position:relative;margin:0 0 4px;padding:30px 0 6px;overflow:hidden}
+.fxfan-in{display:flex;justify-content:center;align-items:flex-start;padding:0 18px}
+.fxalb{--w:min(38vw,250px);position:relative;z-index:calc(1 + var(--k));flex:none;width:var(--w);margin:0 -8px;padding:0;border:0;background:none;color:#fff;cursor:pointer;text-align:center;font:inherit;transform-origin:50% 140%;transform:rotate(var(--r));transition:transform .5s var(--ease);-webkit-tap-highlight-color:transparent}
+.fxalb:hover,.fxalb:focus-visible{transform:rotate(calc(var(--r) * .55)) translateY(-8px);outline:none}
+.fxalb:active{transform:rotate(calc(var(--r) * .55)) translateY(-3px) scale(.97)}
+.fxalb-s{position:relative;z-index:2;display:block;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#151515;box-shadow:0 26px 46px -18px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.1),0 16px 44px -22px rgba(255,140,0,.6)}
+.fxalb-s img{display:block;width:100%;height:100%;object-fit:cover}
+.fxalb-s::after{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(255,255,255,.2),transparent 38%);pointer-events:none}
+.fxalb-d{position:absolute;z-index:1;top:5%;left:5%;width:90%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#FCE531 0 15%,#111 15.5% 17.5%,transparent 18%),repeating-radial-gradient(circle,#151515 0 2px,#222 2px 3.5px);box-shadow:0 12px 30px -12px #000,inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .7s var(--ease)}
+.fxalb-d i{position:absolute;inset:48.5%;border-radius:50%;background:#111}
+.fxalb[data-album=hg] .fxalb-d{transform:translateX(-20%) rotate(-40deg)}
+.fxalb[data-album=lege] .fxalb-d{transform:translateX(20%) rotate(40deg)}
+.fxalb[data-album=hg]:hover .fxalb-d{transform:translateX(-27%) rotate(-120deg)}
+.fxalb[data-album=lege]:hover .fxalb-d{transform:translateX(27%) rotate(120deg)}
+.fxalb-t{display:flex;flex-direction:column;gap:3px;margin-top:14px}
+.fxalb-t b{font:800 16.5px/1.1 var(--hf)}
+.fxalb-t small{font-size:12px;color:var(--muted,#aaa)}
+.fxfan-h{margin:14px 0 0;text-align:center;font-size:12.5px;color:var(--muted,#aaa)}
+.fxfan.intro .fxalb{animation:fxalbin .85s var(--ease) both;animation-delay:calc(var(--k) * .13s + .1s)}
+.fxfan.intro .fxalb-d{animation:fxdisc 1.1s var(--ease) both;animation-delay:calc(var(--k) * .13s + .6s)}
+.fxfan.ret .fxalb{animation:fxfade .5s ease both}
+.fxah{margin:0 18px 8px;animation:fxin .5s var(--ease) both}
+.fxback{display:inline-flex;align-items:center;gap:6px;height:36px;margin:0 0 14px;padding:0 14px 0 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:#fff;font:700 13.5px/1 var(--hf);cursor:pointer}
+.fxback svg{width:16px;height:16px;transform:rotate(180deg)}
+.fxah-in{display:flex;align-items:center;gap:16px}
+.fxah-c{flex:none;width:clamp(112px,32vw,210px);aspect-ratio:1;object-fit:cover;border-radius:14px;box-shadow:0 22px 40px -18px #000,0 0 0 1px rgba(255,255,255,.1),0 14px 40px -22px rgba(255,140,0,.6)}
+.fxah-tx{min-width:0;display:flex;flex-direction:column;gap:7px}
+.fxah-tx h2{margin:0;font-family:var(--hf);font-size:clamp(24px,6.4vw,52px);line-height:1.02;background:linear-gradient(180deg,#fff,#ffe9a0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fxah-tx p{margin:0;font-size:13.5px;line-height:1.35;color:#d0d0d0}
+.fxah-b{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:2px}
+.fxah .fxh-btn{margin:0;border:0;cursor:pointer;font-family:inherit;padding:10px 16px;font-size:14px}
+.fxah-v{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:700;color:#FCE531;text-decoration:none}
+.fxah-v svg{width:14px;height:14px}
+.fxsec.alb-in .nfrow{animation:fxrow .6s var(--ease) both;animation-delay:calc(var(--ri) * .07s + .25s)}
+@media (min-width:900px){
+.fxalb{--w:260px;margin:0 -12px}
+.fxfan{padding-top:40px}
+.fxah{margin:0 var(--dpx,32px) 10px}
+.fxah-in{gap:28px}
+.fxah-tx p{font-size:16px}
+}
+.enter-back{animation:inBack .55s cubic-bezier(.22,1,.36,1) both}
+.fdlist{display:grid;gap:12px;padding:20px 18px 0}
+.nxcard{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:24px;text-decoration:none;color:#fff;background:linear-gradient(150deg,rgba(255,226,0,.14),#1b1c1f 55%);border:1.5px solid rgba(255,226,0,.45);box-shadow:0 22px 44px -26px rgba(255,220,0,.55);transition:transform .5s var(--spring);animation:rise .8s var(--ease) backwards}
+.nxcard:active{transform:scale(.97)}
+.nxlogo{flex:none;width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.6));animation:nxpop 3.5s ease-in-out infinite}
+.nxtx{min-width:0;display:flex;flex-direction:column;gap:4px}
+.nxtx small{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffe200}
+.nxtx b{font-family:var(--hf);font-size:19px;line-height:1.15}
+.nxs{font-size:13px;line-height:1.45;color:#d8d8d8}
+.nxtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.nxtags em{font-style:normal;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:99px;background:rgba(255,226,0,.12);color:#ffe96b}
+.nxgo{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;margin-top:8px;padding:9px 14px;border-radius:12px;font-weight:700;font-size:13.5px;color:#111;background:linear-gradient(180deg,#fff27a,#ffe200)}
+.nxgo svg{width:16px;height:16px;stroke:#111;fill:none;stroke-width:2.2}
+.nxid{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--muted);margin-top:4px}
+.nxid svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2}
+.nfbrand{display:flex;align-items:center;gap:10px;padding:14px 18px 10px}
+.nfbrand img{height:38px;width:auto}
+.nfbrand .fd-new2{position:static;margin:0}
+.fxh-bd{display:flex;flex-wrap:wrap;gap:6px}
+.fxh-bd em{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:7px;background:rgba(255,255,255,.12);color:#eee}
+.fxh-bd em:first-child{background:#FFD200;color:#111}
+.fxh-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:12px 20px;border-radius:14px;font-weight:800;font-size:15px;color:#111;background:linear-gradient(180deg,#ffe24d,#FFD200);box-shadow:0 12px 28px -10px rgba(255,180,0,.7);transition:transform .4s var(--spring)}
+.fxh-btn svg{width:17px;height:17px;fill:#111;stroke:#111}
+.nfrow{margin-top:24px}
+.nfrow-h{display:flex;align-items:baseline;justify-content:space-between;padding:0 18px 10px}
+.nfrow-h h3{margin:0;font-family:var(--hf);font-size:19px;color:#fff;display:flex;align-items:center;gap:9px}
+.nfrow-h h3::before{content:"";width:4px;height:18px;border-radius:3px;background:linear-gradient(#FFD200,#ff8a00)}
+.nfrow-h a{display:inline-flex;align-items:center;gap:2px;font-size:13px;font-weight:700;color:#FFD200;text-decoration:none}
+.nfrow-h a svg{width:15px;height:15px;stroke:#FFD200;fill:none;stroke-width:2.4}
+.nfmore{margin-top:26px}
+.nfsc{display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:6px 18px 14px;scroll-padding:0 18px;scrollbar-width:none}
+.nfsc::-webkit-scrollbar{display:none}
+.nfsc-wrap{position:relative}
+.nfarr{display:none;position:absolute;top:50%;z-index:3;width:44px;height:44px;margin-top:-22px;border:0;border-radius:50%;padding:0;cursor:pointer;color:#17181a;background:linear-gradient(180deg,#ffe24d,#FFD200);box-shadow:0 10px 24px -10px rgba(255,180,0,.8),0 0 0 1px rgba(255,220,80,.5),inset 0 1px 0 rgba(255,255,255,.7);place-items:center;transition:transform .35s var(--spring),opacity .3s}
+.nfarr svg{width:22px;height:22px;stroke:#17181a;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.nfarr-l{left:6px}
+.nfarr-r{right:6px}
+.nfarr:hover{transform:scale(1.08)}
+.nfarr:active{transform:scale(.95)}
+.nfarr:disabled{opacity:.3;pointer-events:none;transform:none}
+.nfsc-wrap.no-scroll .nfarr{display:none!important}
+@media (hover:hover) and (pointer:fine){
+.nfsc-wrap .nfarr{display:grid}
+}
+@media (min-width:900px){
+.nfsc-wrap .nfarr{display:grid}
+}
+@media (hover:none) and (pointer:coarse) and (max-width:899px){
+.nfsc-wrap .nfarr{display:none!important}
+}
+.nfc{position:relative;flex:none;scroll-snap-align:start;border-radius:18px;overflow:hidden;color:#fff;text-decoration:none;background:#1a1a1a;box-shadow:0 18px 36px -20px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07);transition:transform .45s var(--spring),box-shadow .45s;animation:nfin .7s var(--ease) backwards;animation-delay:calc(var(--i)*70ms + .15s)}
+.nfc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.nfc-g{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),transparent 30%,rgba(10,10,10,.35) 55%,rgba(10,10,10,.95)),linear-gradient(0deg,rgba(255,120,0,.18),transparent 45%)}
+.nfc-p{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,.85);transition:background .3s,transform .4s var(--spring)}
+.nfc-p svg{width:15px;height:15px;fill:#fff;stroke:#fff;margin-left:2px}
+.nfc-t{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-direction:column;gap:2px}
+.nfc-t b{font-family:var(--hf);font-size:19px;line-height:1.1}
+.nfc-t small{font-size:12px;font-weight:700;color:#ffb34d}
+.nfc:hover,.nfc:active{transform:scale(1.04);box-shadow:0 24px 44px -20px rgba(255,150,0,.45),0 0 0 1.5px rgba(255,210,0,.7)}
+.nfc:hover img,.nfc:active img{transform:scale(1.1)}
+.nfc:hover .nfc-p,.nfc:active .nfc-p{background:#FFD200;transform:scale(1.08)}
+.nfc:hover .nfc-p svg,.nfc:active .nfc-p svg{fill:#111;stroke:#111}
+@media (min-width:700px) and (max-width:1023px){
+.bar{padding-left:28px;padding-right:28px}
+.fdlist{grid-template-columns:1fr 1fr}
+.fdlist>.lnk{grid-column:1/-1}
+}
+@media (min-width:1024px){
+:root{--dw:1280px;--dpx:clamp(28px,3.2vw,48px)}
+.view>.bar{top:72px;padding-left:var(--dpx);padding-right:var(--dpx);background:rgba(28,30,33,.72)}
+.view>.bar .iconbtn[data-act=home],.view>.bar .sndbtn{display:none}
+.bar .ttl{font-size:17px}
+.fdv{box-shadow:0 0 0 100vmax #0d0d0e;clip-path:inset(0 -100vmax)}
+.nfbrand{padding:22px var(--dpx) 14px}
+.nfbrand img{height:46px}
+.fxh-btn{padding:15px 26px;font-size:17px}
+.nfrow{margin-top:40px}
+.nfrow-h{padding:0 var(--dpx) 14px}
+.nfrow-h h3{font-size:clamp(20px,1.8vw,26px)}
+.nfsc{padding:8px var(--dpx) 22px;scroll-padding:0 var(--dpx);gap:18px}
+.nfc-t b{font-size:clamp(19px,1.6vw,24px)}
+.fdlist{grid-template-columns:1fr 1fr;gap:18px;padding:8px var(--dpx) 0!important}
+.fdlist>.nxcard{grid-row:span 3}
+.fdlist>.lnk{max-width:none;margin:0!important}
+}
+.nfcnt{font:700 11px/1 var(--bf,Inter),sans-serif;color:#111;background:#FFD200;border-radius:99px;padding:3px 7px;margin-left:2px}
+.nfv .nfc-t b{font-size:16px!important;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nfc.nfv{width:62vw;max-width:280px}
+@media (min-width:1024px){
+.nfc.nfv{width:calc((min(100vw,var(--dw)) - 2*var(--dpx) - 3*18px)/4.2)}
+}
+.fdv.fxs .fxsec{display:block!important}
+.fxsearch{position:relative;display:flex;align-items:center;gap:10px;margin:0 18px 12px;padding:0 12px 0 14px;height:48px;border-radius:15px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);transition:border-color .3s,box-shadow .3s}
+.fxsearch:focus-within{border-color:rgba(255,210,0,.7);box-shadow:0 0 0 4px rgba(255,210,0,.12)}
+.fxsearch>svg{flex:none;width:19px;height:19px;stroke:#FFD200;fill:none;stroke-width:2}
+.fxsearch input{flex:1;min-width:0;height:100%;border:0;outline:0;background:none;color:#fff;font:500 16px/1 var(--bf,Inter),sans-serif}
+.fxsearch input::placeholder{color:#8d9196}
+.fxsearch input::-webkit-search-cancel-button{display:none}
+#fxcnt{flex:none;font-size:12px;font-weight:700;color:#FFD200}
+.fxclr{flex:none;width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;cursor:pointer}
+.fxclr svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.4}
+.fxnone{margin:24px 18px;padding:22px;text-align:center;border-radius:18px;background:rgba(255,255,255,.05);color:#cfd2d6;font-weight:600}
+.nfc.nfv{width:64vw;max-width:290px;aspect-ratio:16/9}
+.nfv-fb{position:absolute;inset:0;background-color:#1d1e21;background-size:cover;background-position:center;display:grid;place-items:center}
+.nfv-fb::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,170,0,.35),rgba(20,20,22,.55) 45%,rgba(236,103,47,.4));mix-blend-mode:normal}
+.nfv-fb.nofb{background-image:radial-gradient(120% 100% at 20% 0%,#3a2a0a,#17181a 60%),linear-gradient(#17181a,#17181a)}
+.nfv-fb b{position:relative;font:800 46px/1 var(--hf);color:rgba(255,210,0,.22);transform:translateY(-14px)}
+.nfv img{opacity:1;transition:opacity .35s,transform .9s var(--ease)}
+.nfv img.ok{opacity:1}
+.nfv .nfc-t b{font-size:15.5px!important;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nfv .nfc-t small{font-size:11px}
+.nfv .nfc-p{top:auto;bottom:auto;top:10px;width:34px;height:34px}
+.nfc[hidden],.nfrow[hidden]{display:none!important}
+.fdv.fxs .nfc{animation:none}
+.nfrow-h{gap:12px;align-items:center}
+.nfrow-h h3{min-width:0;flex-wrap:wrap}
+.nfrow-h a{flex:none;white-space:nowrap}
+@media (max-width:480px){
+.nfrow-h h3{font-size:17px}
+.nfrow-h a{font-size:12.5px}
+}
+@media (min-width:700px) and (max-width:1023px){
+.nfc.nfv{width:250px}
+}
+@media (min-width:1024px){
+.fxsearch{margin:0 var(--dpx) 14px;max-width:560px}
+.nfc.nfv{width:calc((min(100vw,var(--dw)) - 2*var(--dpx) - 4*18px)/5.2);max-width:none}
+.fxnone{margin:30px var(--dpx)}
+}
+.nfc.nfv.po9{width:42vw;max-width:200px;aspect-ratio:auto;height:auto;overflow:visible;background:transparent;box-shadow:none;display:flex;flex-direction:column}
+.po9 img,.po9 .nfv-fb{position:relative;inset:auto;left:auto;right:auto;top:auto;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;object-position:center;filter:none;z-index:1;border-radius:18px;display:block;box-shadow:0 18px 36px -20px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07)}
+.po9 .nfv-fb{position:absolute;inset:auto 0 auto 0;top:0}
+.po9 .nfc-g{display:none}
+.po9 .nfv-fb::before{display:none}
+.po9 .nfv-fb b{font-size:34px;transform:none}
+.nfc.po9:hover,.nfc.po9:active{box-shadow:none}
+.nfc.po9:hover img,.nfc.po9:active img{transform:none;box-shadow:0 24px 44px -20px rgba(255,150,0,.45),0 0 0 1.5px rgba(255,210,0,.7)}
+.po9 .nfc-p{z-index:2;top:8px;right:8px}
+.po9 .nfc-t{position:relative;left:auto;right:auto;top:auto;bottom:auto;z-index:2;padding:8px 2px 0;gap:2px}
+.po9 .nfc-t b{font-family:var(--hf)!important;font-weight:700;font-size:12.5px!important;line-height:1.2!important;letter-spacing:0;text-transform:none;color:#fff;transform:none;text-shadow:0 1px 3px rgba(0,0,0,.6);-webkit-line-clamp:2!important;padding:0;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.po9:nth-child(even) .nfc-t b{color:#fff}
+.po9 .nfc-t small{font-size:10.5px;color:#ffcf6b;padding-left:0}
+@media (min-width:700px) and (max-width:1023px){
+.nfc.nfv.po9{width:190px}
+}
+@media (min-width:1024px){
+.nfc.nfv.po9{width:calc((min(100vw,var(--dw)) - 2*var(--dpx) - 5*18px)/6.2);max-width:none}
+.po9 .nfc-t b{font-size:13px!important}
+}
+@keyframes arr{0%,100%{transform:translateX(0);opacity:.3}50%{transform:translateX(16px);opacity:1}}
+@keyframes drift1{to{transform:translate3d(28vmax,34vh,0)}}
+@keyframes drift2{to{transform:translate3d(-30vmax,-30vh,0)}}
+@keyframes fxalbin{from{opacity:0;transform:translateY(70px) rotate(0deg) scale(.88)}}
+@keyframes fxdisc{from{transform:translateX(0) rotate(0deg)}}
+@keyframes fxfade{from{opacity:0}}
+@keyframes fxin{from{opacity:0;transform:translateY(10px) scale(.985)}}
+@keyframes fxrow{from{opacity:0;transform:translateY(24px)}}
+@keyframes hspin{to{transform:rotate(360deg)}}
+@keyframes igspin{to{transform:rotate(360deg)}}
+@keyframes inBack{from{opacity:0;transform:translate3d(-18px,0,0)}to{opacity:1;transform:none}}
+@keyframes mL{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@keyframes mR{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
+@keyframes nfin{from{opacity:0;transform:translateX(24px)}}
+@keyframes nxpop{50%{transform:translateY(-3px) rotate(-2deg)}}
+@keyframes rise{from{opacity:0;transform:translate3d(0,26px,0)}}
+@keyframes slatePan{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.08) translate3d(-2%,-2%,0)}}
+
+
+/* ===== Fresh Digital – eigene Seite: Rahmen ===== */
+#app{max-width:540px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative;z-index:2;overflow-x:clip}
+@media (min-width:700px) and (max-width:1023px){#app{max-width:860px}}
+@media (min-width:900px){#app{max-width:1180px}}
+@media (min-width:1024px){#app{max-width:var(--dw)}}
+.view>.bar{top:0!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Kopfzeile mit Logo EDEKA Food Academy Fresh */
+.fdhead{gap:14px}
+.fdh-logo{display:block;flex:none;line-height:0;border-radius:6px}
+.fdh-logo img{display:block;height:38px;width:auto}
+.fdhead .ttl{font-size:17px}
+@media (min-width:900px){.fdh-logo img{height:48px}.fdhead .ttl{font-size:19px}}
+/* Kacheln sind (noch) Buttons statt Links */
+button.nfc{padding:0;border:0;font:inherit;text-align:start;cursor:pointer;-webkit-appearance:none;appearance:none}
+.nfsoon2{position:absolute;left:10px;top:10px;z-index:3;padding:4px 8px;border-radius:7px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#FFD200;background:rgba(0,0,0,.62);border:1px solid rgba(255,210,0,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.fxah-soon{background:rgba(255,255,255,.08)!important;color:#fff!important;border:1px solid rgba(255,210,0,.45)!important;box-shadow:none!important;cursor:default}
+.fxah-soon svg{fill:#FFD200!important;stroke:#FFD200!important}
+.fxh-bd em:first-child{background:rgba(255,138,31,.18);color:#FFB36B;border:1px solid rgba(255,138,31,.45)}
+/* Fußzeile */
+.fdfoot{margin:34px 18px 0;padding-top:18px;border-top:1px solid var(--line);text-align:center;font-size:12px;line-height:1.6;color:var(--muted)}
+.fdfoot a{color:#FFD200;font-weight:700;text-decoration:none}
+@media (min-width:900px){.fdfoot{margin-left:var(--dpx);margin-right:var(--dpx)}}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.fxclr[hidden]{display:none!important}
+
+</style>
+</head>
+<body>
+<div id="bg" aria-hidden="true"><div class="slate"></div><div class="glow g1"></div><div class="glow g2"></div>
+ <div class="rows"></div>
+ <svg class="hrt h1" viewBox="0 0 26 24"><path d="M13 21.5 3.6 12.1a5.4 5.4 0 0 1 0-7.6 5.4 5.4 0 0 1 7.6 0L13 6.3l1.8-1.8a5.4 5.4 0 0 1 7.6 0 5.4 5.4 0 0 1 0 7.6Z"/></svg>
+ <svg class="hrt h2" viewBox="0 0 26 24"><path d="M13 21.5 3.6 12.1a5.4 5.4 0 0 1 0-7.6 5.4 5.4 0 0 1 7.6 0L13 6.3l1.8-1.8a5.4 5.4 0 0 1 7.6 0 5.4 5.4 0 0 1 0 7.6Z"/></svg>
+ <div class="arrows"><svg viewBox="0 0 60 24"><path d="M4 12h44M38 4l10 8-10 8M14 4l-8 8 8 8"/></svg><svg viewBox="0 0 60 24"><path d="M4 12h44M38 4l10 8-10 8M14 4l-8 8 8 8"/></svg><svg viewBox="0 0 60 24"><path d="M4 12h44M38 4l10 8-10 8M14 4l-8 8 8 8"/></svg></div>
+ <div class="tint"></div></div>
+<div id="app"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="videos.js"></script>
+<script>
+/* Fresh Digital – EDEKA Food Academy Fresh
+   Album-Fächer (100 Handgriffe, Legetechniken) → Album mit Video-Reihen im Netflix-Stil.
+   Videos sind vorbereitet, aber noch nicht eingebunden: Kacheln zeigen „Bald verfügbar“.
+   Daten: videos.js (window.FD_VIDEOS). */
+const IC = {"search": "<circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/>", "x": "<path d=\"M6 6l12 12M18 6 6 18\"/>", "chev": "<path d=\"m9 6 6 6-6 6\"/>", "play": "<path d=\"M7 4.5v15l12-7.5z\"/>", "book": "<path d=\"M2.5 5.5C5 4.3 8.5 4 12 6c3.5-2 7-1.7 9.5-.5v13c-2.5-1.2-6-1.5-9.5.5-3.5-2-7-1.7-9.5-.5z\"/><path d=\"M12 6v13\"/>", "trophy": "<path d=\"M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8\"/>", "insta": "<rect x=\"3.5\" y=\"3.5\" width=\"17\" height=\"17\" rx=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><circle cx=\"17.3\" cy=\"6.7\" r=\".9\" fill=\"currentColor\"/>", "prev": "<path d=\"M15 18 9 12l6-6\"/>", "next": "<path d=\"m9 6 6 6-6 6\"/>", "arrow": "<path d=\"M5 12h14M13 6l6 6-6 6\"/>", "home": "<path d=\"M3 11 12 4l9 7\"/><path d=\"M5 10v10h14V10\"/>", "flame": "<path d=\"M12 21c-4 0-6.5-2.6-6.5-6 0-4 3.5-6 4-10 2.5 1.5 3.5 4 3.5 6 1-1 1.5-2 1.5-3 2 1.5 4 4 4 7 0 3.4-2.5 6-6.5 6z\"/>", "spark": "<path d=\"M12 3v4M12 17v4M3 12h4M17 12h4\"/><path d=\"m12 8 1.6 2.4L16 12l-2.4 1.6L12 16l-1.6-2.4L8 12l2.4-1.6z\"/>", "ext": "<path d=\"M14 4h6v6M20 4l-9 9\"/><path d=\"M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5\"/>", "shield": "<path d=\"M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z\"/><path d=\"m9 12 2 2 4-4\"/>"};
+const svg = (n, c = '') => `<svg viewBox="0 0 24 24" class="${c}" aria-hidden="true">${IC[n] || ''}</svg>`;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const T = (k, ...a) => a.length ? k.replace(/\{(\d)\}/g, (m, i) => a[+i]) : k;
+const fxNorm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss');
+const FD = window.FD_VIDEOS;
+const NFX = 'target="_blank" rel="noopener"';
+const FINDER = 'https://edekafoodacademy.github.io/food-academy-seminar-app/';
+const thumbSrc = id => 'thumbs/' + id + '.webp';
+const S = { fdAlb: '', fdQ: '' };
+const app = document.getElementById('app');
+
+/* kleines Haptik-Feedback auf Handys (wo erlaubt) */
+const fb = (_, ms = 8) => { try { if (matchMedia('(pointer:coarse)').matches && navigator.vibrate) navigator.vibrate(ms) } catch (_) {} };
+function toast(t) { const e = document.getElementById('toast'); e.textContent = t; e.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove('show'), 2200) }
+
+/* Hintergrund-Schriftbänder wie im Seminar-Finder */
+function buildBgRows() {
+  const r = document.querySelector('#bg .rows'); const txt = T('INSPIRIEREN · BEFÄHIGEN · ERMÖGLICHEN · '); let h = '';
+  for (let i = 0; i < 5; i++) { const seg = `<span>${txt.repeat(2)}</span>`; h += `<div class="row ${i % 2 ? 'r' : 'l'}${i === 3 ? ' f' : ''}" style="animation-duration:${80 + i * 10}s">${seg}${seg}</div>` }
+  r.innerHTML = h
+}
+
+/* ---------- Alben ---------- */
+function fdAlbums() {
+  const cnt = k => FD[k].reduce((n, g) => n + g.v.length, 0);
+  return {
+    hg: { k: 'hg', t: T('100 Handgriffe'), img: 'fresh/fd-hg.webp', n: cnt('hg'), p: T('Die wichtigsten Moves für Fleisch, Wurst, Käse und Fisch') },
+    lege: { k: 'lege', t: T('Legetechniken'), img: 'fresh/fd-lege2.webp', n: cnt('lege'), p: T('Platten und Theke professionell legen – in drei Levels') }
+  }
+}
+function fdAlbHead(a) {
+  return `<div class="fxah"><button class="fxback" data-albx>${svg('chev')}<span>${T('Alben')}</span></button><div class="fxah-in"><img class="fxah-c" src="${a.img}" alt=""><div class="fxah-tx"><span class="fxh-bd"><em>${T('Bald verfügbar')}</em><em>${T('{0} Videos', a.n)}</em></span><h2>${esc(a.t)}</h2><p>${esc(a.p)}</p><div class="fxah-b"><button class="fxh-btn fxah-soon" data-soon>${svg('play')}${T('Videos folgen in Kürze')}</button></div></div></div></div>`
+}
+function fdRow(g, sec, ri) {
+  const name = g.g;
+  return `<section class="nfrow" style="--ri:${ri || 0}"><div class="nfrow-h"><h3>${esc(name)}<small class="nfcnt">${g.v.length}</small></h3></div>
+  <div class="nfsc-wrap"><button type="button" class="nfarr nfarr-l" data-nfarr="-1" aria-label="${T('Zurück')}">${svg('prev')}</button><div class="nfsc">${g.v.map(([t, id, vid], i) => `<button type="button" class="nfc nfv${sec === 'hg' ? ' po9' : ''}" data-soon data-t="${esc(fxNorm(t))}" aria-label="${esc(t)} – ${T('Bald verfügbar')}" style="--i:${Math.min(i, 8)};--r:${(i % 3 - 1) * 1.4}deg"><span class="nfv-fb nofb"><b>${String(i + 1).padStart(2, '0')}</b></span><img src="${thumbSrc(id)}" alt="" decoding="async" onload="this.classList.add('ok')"><span class="nfc-g"></span><span class="nfsoon2">${T('Bald verfügbar')}</span><span class="nfc-p">${svg('play')}</span><span class="nfc-t"><b>${esc(t)}</b><small>${esc(name)}</small></span></button>`).join('')}</div><button type="button" class="nfarr nfarr-r" data-nfarr="1" aria-label="${T('Weiter')}">${svg('next')}</button></div></section>`
+}
+
+/* ---------- Pfeile für die Reihen (Desktop) ---------- */
+function updNfArr(wrap) { const sc = wrap.querySelector('.nfsc'); if (!sc) return; const max = Math.max(0, sc.scrollWidth - sc.clientWidth); const sl = sc.scrollLeft; const eps = 8; const l = wrap.querySelector('.nfarr-l'), r = wrap.querySelector('.nfarr-r'); if (l) l.disabled = sl <= eps; if (r) r.disabled = sl >= max - eps; wrap.classList.toggle('no-scroll', max <= eps) }
+function initNfArr(root) {
+  (root || document).querySelectorAll('.nfsc-wrap').forEach(wrap => {
+    if (wrap.dataset.nfarrOn) { updNfArr(wrap); return } wrap.dataset.nfarrOn = 1; const sc = wrap.querySelector('.nfsc'); if (!sc) return;
+    wrap.addEventListener('click', e => { const b = e.target.closest('[data-nfarr]'); if (!b || !wrap.contains(b)) return; e.preventDefault(); e.stopPropagation(); const step = Math.max(sc.clientWidth * .9, 120); sc.scrollBy({ left: (+b.dataset.nfarr) * step, behavior: 'smooth' }) });
+    sc.addEventListener('scroll', () => updNfArr(wrap), { passive: true });
+    if (window.ResizeObserver) { const ro = new ResizeObserver(() => updNfArr(wrap)); ro.observe(sc); ro.observe(wrap) } updNfArr(wrap)
+  })
+}
+
+/* ---------- Album-Fächer: Cover fliegt in den Album-Kopf und zurück ---------- */
+const fdRM = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+function fdBox(el) { const r = el.getBoundingClientRect(), w = el.offsetWidth; return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, w } }
+function fdFly(src, a, rotFrom, b, rotTo, hide) {
+  if (!a.w || !b.w || fdRM()) return;
+  const c = document.createElement('img'); c.src = src; c.className = 'fxfly'; c.alt = '';
+  Object.assign(c.style, { width: a.w + 'px', height: a.w + 'px', left: (a.cx - a.w / 2) + 'px', top: (a.cy - a.w / 2) + 'px' }); document.body.appendChild(c);
+  hide.style.visibility = 'hidden'; const dx = b.cx - a.cx, dy = b.cy - a.cy; let done = false;
+  const end = () => { if (done) return; done = true; hide.style.visibility = ''; c.remove() };
+  const an = c.animate([{ transform: `translate(0,0) rotate(${rotFrom}deg) scale(1)` }, { transform: `translate(${dx}px,${dy}px) rotate(${rotTo}deg) scale(${b.w / a.w})` }], { duration: 620, easing: 'cubic-bezier(.2,.85,.25,1)', fill: 'forwards' });
+  an.onfinish = end; an.oncancel = end; setTimeout(end, 1200)
+}
+const fdRot = el => parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0;
+function fdEager(sec) { sec.querySelectorAll('.nfv img').forEach(im => { if (im.complete && im.naturalWidth) im.classList.add('ok'); else { im.loading = 'eager'; im.addEventListener('load', () => im.classList.add('ok'), { once: true }) } }) }
+function openAlbum(k, fromPop) {
+  const v = document.querySelector('.fdv'); if (!v || v.dataset.alb === k) return;
+  const alb = v.querySelector(`.fxalb[data-album="${k}"]`), card = alb && alb.querySelector('.fxalb-s');
+  const from = card && card.offsetParent ? fdBox(card) : null, rot = alb ? fdRot(alb) : 0, src = card ? card.querySelector('img').src : '';
+  fb('open', 10); S.fdAlb = k; if (!fromPop) { try { history.pushState({ ...(history.state || {}), alb: k }, '', location.href) } catch (_) {} }
+  v.dataset.alb = k; const sec = v.querySelector(`.fxsec[data-sec="${k}"]`); sec.classList.remove('alb-in'); void sec.offsetWidth; sec.classList.add('alb-in');
+  window.scrollTo({ top: 0, behavior: 'instant' }); fdEager(sec); sec.querySelectorAll('.nfsc-wrap').forEach(updNfArr);
+  const tgt = sec.querySelector('.fxah-c'); if (from && tgt) fdFly(src, from, rot, fdBox(tgt), 0, tgt)
+}
+function closeAlbum(fromPop) {
+  const v = document.querySelector('.fdv'); if (!v || !v.dataset.alb) return; const k = v.dataset.alb;
+  const hc = v.querySelector(`.fxsec[data-sec="${k}"] .fxah-c`); const from = hc && hc.offsetParent ? fdBox(hc) : null;
+  S.fdAlb = ''; v.dataset.alb = ''; const fan = v.querySelector('.fxfan'); fan.classList.remove('intro', 'ret'); void fan.offsetWidth; fan.classList.add('ret');
+  window.scrollTo({ top: 0, behavior: 'instant' }); if (!fromPop && history.state && history.state.alb) { try { history.back() } catch (_) {} }
+  const alb = v.querySelector(`.fxalb[data-album="${k}"]`), card = alb && alb.querySelector('.fxalb-s');
+  if (from && card) fdFly(hc.src, from, 0, fdBox(card), fdRot(alb), card)
+}
+window.addEventListener('popstate', () => { const st = history.state || {}; const v = document.querySelector('.fdv'); if (v) { const want = st.alb || ''; if ((v.dataset.alb || '') !== want) { want ? openAlbum(want, true) : closeAlbum(true) } } });
+
+/* ---------- Seite ---------- */
+function igCard() { return `<a class="igcard2" href="https://www.instagram.com/edeka_foodacademy/" ${NFX}><span class="igav"><img src="fresh/fa-insta.webp" alt="EDEKA Food Academy"></span><span class="igtx2"><span class="ign">edeka_foodacademy ${svg('insta', 'igmini')}</span><small>${T('Live dabei: Seminare, Tricks & Fresh-Momente')}</small></span><span class="igfollow">${T('Folgen')}</span></a>` }
+function vFreshDigital() {
+  const alb = (history.state && history.state.alb) || ''; S.fdAlb = alb; const A = fdAlbums();
+  return `<div class="view fdv" data-alb="${alb}">
+   <header class="bar fdhead"><a class="fdh-logo" href="./" aria-label="${T('EDEKA Food Academy Fresh – zur Startseite')}"><img src="img/logo-fa-fresh.png" width="1151" height="537" alt="EDEKA Food Academy Fresh"></a><div class="ttl">Fresh Digital</div></header>
+   <h1 class="sr-only">Fresh Digital</h1>
+   <div class="nfbrand"><img src="fresh/fd-logo.webp" alt="Fresh Digital"><span class="fd-new2">${T('Neu!')}</span></div>
+   <div class="fxsearch">${svg('search')}<input id="fxq" type="search" placeholder="${T('Videos durchsuchen …')}" aria-label="${T('Videos durchsuchen …')}" autocomplete="off"><span id="fxcnt"></span><button class="fxclr" type="button" hidden aria-label="${T('Suche leeren')}">${svg('x')}</button></div>
+   <div class="fxfan${alb ? '' : ' intro'}"><div class="fxfan-in">${['hg', 'lege'].map((k, i) => `<button class="fxalb" data-album="${k}" style="--r:${i ? 8 : -8}deg;--k:${i}" aria-label="${esc(A[k].t)}"><span class="fxalb-d"><i></i></span><span class="fxalb-s"><img src="${A[k].img}" alt="" draggable="false"></span><span class="fxalb-t"><b>${esc(A[k].t)}</b><small>${T('{0} Videos', A[k].n)}</small></span></button>`).join('')}</div><p class="fxfan-h">${T('Album antippen zum Öffnen')}</p></div>
+   <div class="fxsec" data-sec="hg">${fdAlbHead(A.hg)}
+   ${FD.hg.map((g, i) => fdRow(g, 'hg', i)).join('')}</div>
+   <div class="fxsec" data-sec="lege">${fdAlbHead(A.lege)}
+   ${FD.lege.map((g, i) => fdRow(g, 'lege', i)).join('')}</div>
+   <p class="fxnone" hidden>${T('Keine Videos gefunden')}</p>
+   <div class="nfrow-h nfmore"><h3>${T('Mehr von der Food Academy')}</h3></div>
+   <div class="fdlist" style="padding-top:4px">
+    <a class="nxcard" href="https://www.next.edeka/nst_" ${NFX}><img class="nxlogo" src="fresh/next-logo.webp" alt="EDEKA next"><span class="nxtx"><small>${T('Blended Learning')}</small><b>${T('Wissen, das zu dir passt.')}</b><span class="nxs">${T('Unsere Seminare enden nicht nach dem letzten Seminartag: Auf EDEKA next bekommst du passende Lerninhalte, Videos und Unterlagen direkt vor und nach deinem Seminar – zum Vertiefen, Wiederholen und sofort im Markt Anwenden.')}</span><span class="nxtags"><em>${T('Einfach.')}</em><em>${T('Flexibel.')}</em><em>${T('Direkt verfügbar.')}</em></span><span class="nxgo">${svg('ext')}${T('Zu EDEKA next')}</span><span class="nxid">${svg('shield')}${T('Zugang mit EDEKA-ID & Passwort')}</span></span></a>
+    <a class="wzcard" href="https://wizzup.quizzer-server.de/" ${NFX}><span class="wzlogo">Wizz<br>Up!</span><span class="wztx"><b>${T('Lernen, spielen, Wissen pushen!')}</b><small>${T('WizzUp! macht Lernen zum Quiz-Duell – im Browser oder per App. Mit deinem next-Zugang startest du sofort.')}</small><span class="wzgo">${svg('trophy')}${T('Zur Challenge')}</span></span></a>
+    ${igCard()}
+    <a class="lnk glass" href="${FINDER}#katalog-fresh" ${NFX} style="margin:0;width:100%"><span class="pi">${svg('book')}</span><span><b>${T('Fresh-Broschüre 2027')}</b><span class="s">${T('Im Seminar-Finder der Food Academy')}</span></span>${svg('chev', 'arr')}</a>
+   </div>
+   <footer class="fdfoot">EDEKA Food Academy Fresh · Nordbayern · Sachsen · Thüringen<br><a href="${FINDER}" ${NFX}>${T('Zum Seminar-Finder 2027')}</a></footer>
+   <div style="height:calc(24px + var(--safe-b))"></div></div>`
+}
+
+function initFx(v) {
+  initNfArr(v);
+  const fan = v.querySelector('.fxfan.intro'); if (fan) setTimeout(() => fan.classList.remove('intro'), 1800);
+  if (v.dataset.alb) { const sec = v.querySelector(`.fxsec[data-sec="${v.dataset.alb}"]`); if (sec) fdEager(sec) }
+  v.querySelectorAll('.nfv img').forEach(im => { const ok = () => im.classList.add('ok'); if (im.complete && im.naturalWidth) ok(); else im.addEventListener('load', ok, { once: true }) });
+  const q = v.querySelector('#fxq'); const cnt = v.querySelector('#fxcnt'), none = v.querySelector('.fxnone'), clr = v.querySelector('.fxclr');
+  const run = () => {
+    const s = fxNorm(q.value.trim()); v.classList.toggle('fxs', !!s); clr.hidden = !s; let n = 0;
+    v.querySelectorAll('.fxsec .nfrow').forEach(r => { let k = 0; const cs = r.querySelectorAll('.nfv'); cs.forEach(c => { const m = !s || c.dataset.t.includes(s); c.hidden = !m; if (m) k++ }); r.hidden = !!s && !k; const b = r.querySelector('.nfcnt'); if (b) b.textContent = s ? k : cs.length; n += k });
+    cnt.textContent = s ? T('{0} Videos', n) : ''; none.hidden = !s || n > 0; v.querySelectorAll('.nfsc-wrap').forEach(updNfArr)
+  };
+  q.addEventListener('input', run); clr.addEventListener('click', () => { q.value = ''; run(); q.focus() })
+}
+
+function render() { app.innerHTML = vFreshDigital(); initFx(app.querySelector('.fdv')) }
+
+app.addEventListener('click', e => {
+  const ab = e.target.closest('[data-album]'); if (ab) { openAlbum(ab.dataset.album); return }
+  if (e.target.closest('[data-albx]')) { fb('sel', 8); closeAlbum(); return }
+  if (e.target.closest('[data-soon]')) { fb('sel', 8); toast(T('Video folgt in Kürze')); return }
+});
+
+document.documentElement.style.setProperty('--acc', '#FF8A1F');
+buildBgRows();
+render();
+
+/* PWA: Service Worker für Home-Bildschirm & Offline */
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}) }) }
+
+</script>
+</body>
+</html>
